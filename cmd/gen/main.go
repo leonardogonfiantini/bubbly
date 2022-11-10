@@ -8,59 +8,71 @@ import (
 )
 
 func main() {
-	graphAst, _ := gographviz.ParseString(`digraph G {
+	graphAst, _ := gographviz.ParseString(`digraph G { 
+		layout=circo
 	}`)
 	graph := gographviz.NewGraph()
 	if err := gographviz.Analyse(graphAst, graph); err != nil {
 		panic(err)
 	}
-
-
 	label := "<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\" cellpadding=\"10\">" +
-				"<tr> <td> sales other things just to make</td> </tr>" +
-				"<tr> <td align=\"left\"> att1 </td> </tr> <tr> <td align=\"left\"> att2 </td> </tr> <tr> <td align=\"left\"> att3 </td> </tr> <tr> <td align=\"left\"> att4 </td> </tr> <tr> <td align=\"left\"> att5 </td> </tr> <tr> <td align=\"left\"> att6 </td> </tr>  </table>>"
+				"<tr> <td port=\"1\"> sales other things just to make</td> </tr>" +
+				"<tr> <td align=\"left\" port=\"2\"> att1 </td> </tr> <tr> <td align=\"left\" port=\"3\"> att2 </td> </tr> <tr> <td align=\"left\"> att3 </td> </tr> <tr> <td align=\"left\"> att4 </td> </tr> <tr> <td align=\"left\"> att5 </td> </tr> <tr> <td align=\"left\"> att6 </td> </tr>  </table>>"
 
 
+	graph.AddNode("G", "fact", map[string]string{"shape":"box", "root":"true", "label":label })
 
-	graph.AddSubGraph("G", "how", map[string]string{"rank": "same"})
-	graph.AddNode("how", "y1", map[string]string{"shape":"box"})
-	graph.AddNode("how", "y2", map[string]string{"shape":"box"})
-	graph.AddNode("how", "y3", map[string]string{"shape":"box"})
-	graph.AddNode("how", "y4", map[string]string{"shape":"box"})
+	graph.AddSubGraph("G", "dom1", map[string]string{"rankdir":"LR"})
+	graph.AddNode("dom1", "a", nil)
+	graph.AddNode("dom1", "b", nil)
+	graph.AddNode("dom1", "c", nil)
+	graph.AddNode("dom1", "e", nil)
+	graph.AddNode("dom1", "x", nil)
+	graph.AddNode("dom1", "y", nil)
+	graph.AddNode("dom1", "w", nil)
+	graph.AddNode("dom1", "z", nil)
 
-	graph.AddNode("G", "fact", map[string]string{"shape":"plain", "label": label})
+	graph.AddEdge("a", "b", true, nil)
+	graph.AddEdge("a", "c", true, nil)
+	graph.AddEdge("c", "e", true, nil)
+	graph.AddEdge("b", "e", true, nil)
 
-	graph.AddEdge("how", "fact", true, map[string]string{"dir":"back"})
-
-	graph.AddSubGraph("G", "where", map[string]string{"rank": "same"})
-	graph.AddNode("where", "fact", nil)
-
-	graph.AddNode("where", "x2", map[string]string{"group": "left"})
-
-	graph.AddEdge("x2", "fact", true, map[string]string{"dir":"back"})
-
-	graph.AddNode("G", "x1", map[string]string{"group": "left"})
-	graph.AddNode("G", "x3", map[string]string{"group": "left"})
-
-	graph.AddEdge("x1", "x2", true, map[string]string{"style":"invis"})
-	graph.AddEdge("x2", "x3", true, map[string]string{"style":"invis"})
-
-	graph.AddEdge("fact", "x1", true, map[string]string{"dir":"back", "constraint":"false"})
-	graph.AddEdge("fact", "x3", true, map[string]string{"dir":"back", "constraint":"false"})
+	graph.AddEdge("e", "z", true, nil)
+	graph.AddEdge("z", "w", true, nil)
+	graph.AddEdge("w", "x", true, nil)
+	graph.AddEdge("w", "y", true, nil)
+	graph.AddEdge("y", "x", true, nil)
 
 
-	graph.AddNode("where", "z2", map[string]string{"group": "right"})
+	graph.AddEdge("fact", "a", true, nil)
+	graph.AddEdge("fact", "a", true, nil)
 
-	graph.AddEdge("fact", "z2", true, map[string]string{"dir":"back"})
 
-	graph.AddNode("G", "z1", map[string]string{"group": "right"})
-	graph.AddNode("G", "z3", map[string]string{"group": "right"})
+	graph.AddSubGraph("G", "dom2", nil)
+	graph.AddNode("dom2", "f", nil)
+	graph.AddNode("dom2", "g", nil)
+	graph.AddNode("dom2", "h", nil)
+	graph.AddNode("dom2", "i", nil)
 
-	graph.AddEdge("z1", "z2", true, map[string]string{"style":"invis"})
-	graph.AddEdge("z2", "z3", true, map[string]string{"style":"invis"})
+	graph.AddNode("G", "k", nil)
+	graph.AddNode("G", "kk", nil)
+	graph.AddNode("G", "kkk", nil)
+	graph.AddNode("G", "kkkk", nil)
 
-	graph.AddEdge("fact", "z1", true, map[string]string{"dir":"back", "constraint":"false"})
-	graph.AddEdge("fact", "z3", true, map[string]string{"dir":"back", "constraint":"false"})
+	graph.AddEdge("fact", "k", true, nil)
+	graph.AddEdge("k", "kk", true, nil)
+	graph.AddEdge("kk", "kkk", true, nil)
+	graph.AddEdge("kkk", "kkkk", true, nil)
+
+
+	graph.AddEdge("f", "g", true, nil)
+	graph.AddEdge("h", "i", true, nil)
+	graph.AddEdge("g", "i", true, nil)
+
+	graph.AddEdge("fact", "f", true, nil)
+	graph.AddEdge("fact", "h", true, nil)
+
+
 
 
 

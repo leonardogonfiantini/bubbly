@@ -1,34 +1,50 @@
 digraph G {
-	subgraph how {
-	rank=same;
-	y1 [ shape=box ];
-	y2 [ shape=box ];
-	y3 [ shape=box ];
-	y4 [ shape=box ];
-
-}
-->fact[ dir=back ];
-	x2->fact[ dir=back ];
-	x1->x2[ style=invis ];
-	x2->x3[ style=invis ];
-	fact->x1[ constraint=false, dir=back ];
-	fact->x3[ constraint=false, dir=back ];
-	fact->z2[ dir=back ];
-	z1->z2[ style=invis ];
-	z2->z3[ style=invis ];
-	fact->z1[ constraint=false, dir=back ];
-	fact->z3[ constraint=false, dir=back ];
-	subgraph where {
-	rank=same;
-	fact [ label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="10"><tr> <td> sales other things just to make</td> </tr><tr> <td align="left"> att1 </td> </tr> <tr> <td align="left"> att2 </td> </tr> <tr> <td align="left"> att3 </td> </tr> <tr> <td align="left"> att4 </td> </tr> <tr> <td align="left"> att5 </td> </tr> <tr> <td align="left"> att6 </td> </tr>  </table>>, shape=plain ];
-	x2 [ group=left ];
-	z2 [ group=right ];
+	layout=circo;
+	a->b;
+	a->c;
+	c->e;
+	b->e;
+	e->z;
+	z->w;
+	w->x;
+	w->y;
+	y->x;
+	fact->a;
+	fact->a;
+	fact->k;
+	k->kk;
+	kk->kkk;
+	kkk->kkkk;
+	f->g;
+	h->i;
+	g->i;
+	fact->f;
+	fact->h;
+	subgraph dom1 {
+	rankdir=LR;
+	a;
+	b;
+	c;
+	e;
+	w;
+	x;
+	y;
+	z;
 
 }
 ;
-	x1 [ group=left ];
-	x3 [ group=left ];
-	z1 [ group=right ];
-	z3 [ group=right ];
+	subgraph dom2 {
+	f;
+	g;
+	h;
+	i;
+
+}
+;
+	fact [ label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="10"><tr> <td port="1"> sales other things just to make</td> </tr><tr> <td align="left" port="2"> att1 </td> </tr> <tr> <td align="left" port="3"> att2 </td> </tr> <tr> <td align="left"> att3 </td> </tr> <tr> <td align="left"> att4 </td> </tr> <tr> <td align="left"> att5 </td> </tr> <tr> <td align="left"> att6 </td> </tr>  </table>>, root=true, shape=box ];
+	k;
+	kk;
+	kkk;
+	kkkk;
 
 }
