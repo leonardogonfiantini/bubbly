@@ -1,50 +1,7 @@
 digraph G {
 	layout=circo;
-	a->b;
-	a->c;
-	c->e;
-	b->e;
-	e->z;
-	z->w;
-	w->x;
-	w->y;
-	y->x;
-	fact->a;
-	fact->a;
-	fact->k;
-	k->kk;
-	kk->kkk;
-	kkk->kkkk;
-	f->g;
-	h->i;
-	g->i;
-	fact->f;
-	fact->h;
-	subgraph dom1 {
-	rankdir=LR;
-	a;
-	b;
-	c;
-	e;
-	w;
-	x;
-	y;
-	z;
-
-}
-;
-	subgraph dom2 {
-	f;
-	g;
-	h;
-	i;
-
-}
-;
+	fact->ciao[ label=ciao ];
+	ciao [ label="", width=0.5 ];
 	fact [ label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="10"><tr> <td port="1"> sales other things just to make</td> </tr><tr> <td align="left" port="2"> att1 </td> </tr> <tr> <td align="left" port="3"> att2 </td> </tr> <tr> <td align="left"> att3 </td> </tr> <tr> <td align="left"> att4 </td> </tr> <tr> <td align="left"> att5 </td> </tr> <tr> <td align="left"> att6 </td> </tr>  </table>>, root=true, shape=box ];
-	k;
-	kk;
-	kkk;
-	kkkk;
 
 }

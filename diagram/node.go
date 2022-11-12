@@ -1,5 +1,0 @@
-package diagram
-
-import (
-	
-)
