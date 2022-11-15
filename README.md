@@ -1,6 +1,6 @@
 ## bubbly
 
-Bubbly is a library written in go that use gographviz to create DFM by just writing it and not wasting your time by dragging lines and reposition every time by hand all your schema.
+Bubbly is a library written in go that use gographviz to create DFM by just writing it and not wasting your time by dragging lines and reposition every time by hand all your schema at every modify.
 
 what bubbly needs to be complete:
 - [x] convergence
