@@ -1,7 +1,30 @@
 digraph G {
-	layout=circo;
-	fact->ciao[ label=ciao ];
-	ciao [ label="", width=0.5 ];
-	fact [ label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="10"><tr> <td port="1"> sales other things just to make</td> </tr><tr> <td align="left" port="2"> att1 </td> </tr> <tr> <td align="left" port="3"> att2 </td> </tr> <tr> <td align="left"> att3 </td> </tr> <tr> <td align="left"> att4 </td> </tr> <tr> <td align="left"> att5 </td> </tr> <tr> <td align="left"> att6 </td> </tr>  </table>>, root=true, shape=box ];
+	layout="circo";
+	fact->ciao[ arrowhead=none ];
+	fact->bella[ arrowhead=none ];
+	ciao->ok[ arrowhead=none ];
+	fact->3[ arrowhead=none ];
+	fact->4[ arrowhead=none ];
+	ok->1[ arrowhead=none ];
+	ok->2[ arrowhead=none ];
+	g->88[ arrowhead=none ];
+	ciao->41[ arrowhead=none ];
+	ciao->32[ arrowhead=icurve ];
+	2->g;
+	1->g;
+	ciao->scialla[ arrowhead=none ];
+	1 [ label="", shape=circle, xlabel=1 ];
+	2 [ label="", shape=circle, xlabel=2 ];
+	3 [ label="", shape=circle, xlabel=3 ];
+	32 [ label="", shape=circle, xlabel=32 ];
+	4 [ label="", shape=circle, xlabel=4 ];
+	41 [ label="", shape=circle, xlabel=41 ];
+	88 [ label="", shape=circle, xlabel=88 ];
+	bella [ label="", shape=circle, xlabel=bella ];
+	ciao [ label="", shape=circle, xlabel=ciao ];
+	fact [ label=<<table border="0" cellborder="0" cellspacing="0" cellpadding="10"> <tr> <td>provaciao</td> </tr><tr> <td>ciao1</td> </tr><tr> <td>ciao2</td> </tr><tr> <td>ciao3</td> </tr></table>>, root=true, shape=box ];
+	g [ label="", shape=circle, xlabel=g ];
+	ok [ label="", shape=circle, xlabel=ok ];
+	scialla [ shape=underline ];
 
 }

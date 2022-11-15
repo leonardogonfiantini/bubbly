@@ -9,18 +9,31 @@ import (
 
 func main() {
 	
-	label := "<<table border=\"0\" cellborder=\"1\" cellspacing=\"0\" cellpadding=\"10\">" +
-				"<tr> <td port=\"1\"> sales other things just to make</td> </tr>" +
-				"<tr> <td align=\"left\" port=\"2\"> att1 </td> </tr> <tr> <td align=\"left\" port=\"3\"> att2 </td> </tr> <tr> <td align=\"left\"> att3 </td> </tr> <tr> <td align=\"left\"> att4 </td> </tr> <tr> <td align=\"left\"> att5 </td> </tr> <tr> <td align=\"left\"> att6 </td> </tr>  </table>>"
-
 
 	d := diagram.NewDFM()
 	graph := d.Graph
 
-	graph.AddNode("G", "fact", map[string]string{"shape":"box", "root":"true", "label":label })
+	d.CreateFact("provaciao", []string{"ciao1", "ciao2", "ciao3"})
 
 	d.AddNode("ciao", "fact")
+	d.AddNode("bella", "fact")
+	d.AddNode("ok", "ciao")
 
+	d.AddNode("3", "fact")
+	d.AddNode("4", "fact")
+
+	d.AddNode("1", "ok")
+	d.AddNode("2", "ok")
+
+	d.AddNode("88", "g")
+	d.AddNode("41", "ciao")
+
+	d.AddOptional("32", "ciao")
+
+	d.AddConvergence("g", "2")
+	d.AddConvergence("g", "1")
+
+	d.AddDescriptive("ciao", "scialla")
 
 
 
