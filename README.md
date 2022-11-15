@@ -7,6 +7,7 @@ what bubbly needs to be complete:
 - [x] descriptive attributes
 - [x] add fact
 - [x] add node   
+- [x] optional arc
 - [ ] hierarchies
 - [ ] optional convergence arc
 - [ ] optional arc
