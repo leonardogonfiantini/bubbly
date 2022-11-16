@@ -13,29 +13,34 @@ func main() {
 	d := diagram.NewDFM()
 	graph := d.Graph
 
-	d.CreateFact("provaciao", []string{"ciao1", "ciao2", "ciao3"})
+	d.CreateFact("SALE", []string{"quantity", "receipts", "unitPrice", "numberOfCustomers"})
 
-	d.AddNode("ciao", "fact")
-	d.AddNode("bella", "fact")
-	d.AddNode("ok", "ciao")
+	d.AddNode("product", "SALE")
+	d.AddNode("date", "SALE")
+	d.AddNode("store", "SALE")
 
-	d.AddNode("3", "fact")
-	d.AddNode("4", "fact")
+	d.AddNode("brand", "product")
+	d.AddNode("brandCity", "brand")
+	
+	d.AddNode("type", "product")
+	d.AddNode("marketingGroup", "type")
+	d.AddNode("category", "type")
+	d.AddNode("department", "category")
 
-	d.AddNode("1", "ok")
-	d.AddNode("2", "ok")
+	d.AddSequenceDescriptive([]string{"desc1", "desc2", "desc3", "desc4"}, "brand")
 
-	d.AddNode("88", "g")
-	d.AddNode("41", "ciao")
-
-	d.AddOptional("32", "ciao")
-
-	d.AddConvergence("g", "2")
-	d.AddConvergence("g", "1")
-
-	d.AddDescriptive("ciao", "scialla")
+	d.AddHierarchy([]string{"prova1", "prova2"}, "SALE", "prova")
 
 
+	d.AddSequenceNode([]string{"month","quarter","year"}, "date")
+	d.AddNode("holiday", "date")
+	d.AddNode("day", "date")
+	d.AddNode("week", "date")
+
+
+	d.AddSequenceNode([]string{"storeCity", "state", "country"}, "store")
+	d.AddOptional("salesManager", "store")
+	d.AddNode("salesDistrict", "store")
 
 	output := graph.String()
 
