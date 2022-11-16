@@ -12,3 +12,4 @@ what bubbly needs to be complete:
 - [ ] optional convergence arc
 - [ ] optional arc
 - [ ] role
+- [ ] cycle
