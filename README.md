@@ -8,8 +8,12 @@ what bubbly needs to be complete:
 - [x] add fact
 - [x] add node   
 - [x] optional arc
-- [ ] hierarchies
+- [x] hierarchies
 - [ ] optional convergence arc
 - [ ] optional arc
 - [ ] role
 - [ ] cycle
+
+optional objectives:
+- [ ] parser
+- [ ] UI
