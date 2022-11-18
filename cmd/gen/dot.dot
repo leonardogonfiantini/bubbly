@@ -14,8 +14,8 @@ digraph G {
 	brand->desc2[ arrowhead=none ];
 	brand->desc3[ arrowhead=none ];
 	brand->desc4[ arrowhead=none ];
-	SALE->prova[ arrowhead=none, xlabel=prova1 ];
-	SALE->prova[ arrowhead=none, xlabel=prova2 ];
+	SALE->prova[ arrowhead=none, label=prova1 ];
+	SALE->prova[ arrowhead=none, label=prova2 ];
 	date->month[ arrowhead=none ];
 	month->quarter[ arrowhead=none ];
 	quarter->year[ arrowhead=none ];
