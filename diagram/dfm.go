@@ -4,24 +4,27 @@ import (
 	"github.com/awalterschulze/gographviz"
 )
 
+/*
+Struct for DFM schema
+*/
 type Dfm struct {
 	Graph *gographviz.Graph	 //graph
 }
 
 /*
-Attributes for modify nodes in the graph
+Attributes for modify nodes in the DFM schema
 */
 var (
-	nodeAtt = map[string]string{"shape":"circle"}
-	edgeAtt = map[string]string{"arrowhead":"none"}
-	factAtt =  map[string]string{"shape":"plain", "root":"true"}
-	descriptiveAtt = map[string]string{"shape":"underline"}
-	optionalAtt = map[string]string{"arrowhead":"icurve"}
-	hierarchyAtt = map[string]string{"arrowhead":"none"}
+	DFM_nodeAtt = map[string]string{"shape":"circle"}
+	DFM_edgeAtt = map[string]string{"arrowhead":"none"}
+	DFM_factAtt =  map[string]string{"shape":"plain", "root":"true"}
+	DFM_descriptiveAtt = map[string]string{"shape":"underline"}
+	DFM_optionalAtt = map[string]string{"arrowhead":"icurve"}
+	DFM_hierarchyAtt = map[string]string{"arrowhead":"none"}
 )
 
 /*
-NewDfm() return a Dfm struct with gragh
+Create a new object *Dfm to use for creating the dfm schema
 */
 func NewDFM() *Dfm {
 
@@ -40,35 +43,37 @@ func NewDFM() *Dfm {
 }
 
 /*
-CreateFact(title string, attributes []string) add a fact to a node with title = title and attributes = attiributes
+Create a fact to the schema with title = title and attributes = attiributes
 */
 func (d Dfm) CreateFact(title string, attributes []string) {
 
 	label := `<<table border="0" cellborder="1" cellspacing="0" cellpadding="20"> <tr> <td bgcolor="lightblue">`+title+`</td> </tr>`
 	for _, att := range(attributes) {
-		label += `<tr> <td port="port`+att+`">`+att+`</td> </tr>`
+		label += `<tr> <td port="port.`+att+`">`+att+`</td> </tr>`
 	}
 	label += `</table>>`
 
-	fact_att := factAtt
+	fact_att := DFM_factAtt
 	fact_att["label"] = label
 
 	d.Graph.AddNode("G", title, fact_att)
 }
 
 /*
-AddNode(label string, attach string) add a node with label = label to a node with label = attach
-AddSequenceNode(labels[] string, startAttach string) add multiple nodes with label = labels, starting from node with label = startAttach to the node with label = labels[len(labels)]
+Add a node with label = label to a node with label = attach
 */
 func (d Dfm) AddNode(label string, attach string) {
 	
-	node_att := nodeAtt
+	node_att := DFM_nodeAtt
 	node_att["label"] = label
 
 	d.Graph.AddNode("G", label, node_att)
-	d.Graph.AddEdge(attach, label, true, edgeAtt)
+	d.Graph.AddEdge(attach, label, true, DFM_edgeAtt)
 }
 
+/*
+Add multiple nodes with label = labels, starting from node with label = startAttach to the node with label = labels[len(labels)]
+*/
 func (d Dfm) AddSequenceNode(labels []string, startAttach string) {
 
 	d.AddNode(labels[0], startAttach)
@@ -79,10 +84,10 @@ func (d Dfm) AddSequenceNode(labels []string, startAttach string) {
 }
 
 /*
-addConvergence(label string, attach string) add a convergence node with label = label to a node with label = attach
+Add a convergence node with label = label to a node with label = attach
 */
 func (d Dfm) AddConvergence(label string, attach string) {
-	node_att := nodeAtt
+	node_att := DFM_nodeAtt
 	node_att["label"] = label
 
 	d.Graph.AddNode("G", label, node_att)
@@ -90,17 +95,17 @@ func (d Dfm) AddConvergence(label string, attach string) {
 }
 
 /*
-AddHierarchy(labels []string, from string, to string) add a hierachy with 2 or more node with label = labels starting from node with label = to
+Add a hierachy with 2 or more node with label = labels starting from node with label = to
 */
 func (d Dfm) AddHierarchy(labels []string, from string, to string) {
 
-	node_att := nodeAtt
+	node_att := DFM_nodeAtt
 	node_att["label"] = to
 
 	d.Graph.AddNode("G", to, node_att)
 
 	for _, label := range labels {
-		tmpAtt := hierarchyAtt
+		tmpAtt := DFM_hierarchyAtt
 		tmpAtt["label"] = label
 		d.Graph.AddEdge(from, to, true, tmpAtt)
 	}
@@ -108,28 +113,29 @@ func (d Dfm) AddHierarchy(labels []string, from string, to string) {
 }
 
 /*
-AddOptional(label string, attach string) add an optional node with label = label starting from a node with label = attach
+Add an optional node with label = label starting from a node with label = attach
 */
 func (d Dfm) AddOptional(label string, attach string) {
 
-	node_att := nodeAtt
+	node_att := DFM_nodeAtt
 	node_att["label"] = label
 
 	d.Graph.AddNode("G", label, node_att)
-	d.Graph.AddEdge(attach, label, true, optionalAtt)
+	d.Graph.AddEdge(attach, label, true, DFM_optionalAtt)
 }
 
-
 /*
-AddDescriptive(label string, to string) add a new descriptive attribute with the label = label to a node with label = to
-AddSequenceDescriptive(labels []string, to string) add multiple descriptive attiributes with label = labels to a note with label = to
+Add a new descriptive attribute with the label = label to a node with label = to
 */
 func (d Dfm) AddDescriptive(label string, to string) {
 
-	d.Graph.AddNode("G", label, descriptiveAtt)
-	d.Graph.AddEdge(to, label, true, edgeAtt)
+	d.Graph.AddNode("G", label, DFM_descriptiveAtt)
+	d.Graph.AddEdge(to, label, true, DFM_edgeAtt)
 }
 
+/*
+Add multiple descriptive attiributes with label = labels to a note with label = to
+*/
 func (d Dfm) AddSequenceDescriptive(labels []string, to string) {
 
 	for _, label := range labels {
