@@ -14,8 +14,12 @@ func main() {
 	graph := d.Graph
 
 
+	d.CreateFact("SaleFT", []string{"StoreID", "DateID", "ProductID"}, []string{"Quantity", "Receipts"})
 	
-
+	
+	d.AddDimension("DateDT", []string{"DateID"}, []string{"Date", "Month"}, "SaleFT", "DateID")
+	d.AddDimension("StoreDT", []string{"StoreID"}, []string{"Store", "City", "Country", "SalesManager"}, "SaleFT", "StoreID")
+	d.AddDimension("ProductDT", []string{"ProductID"}, []string{"Product", "Type", "Category", "Supplier"}, "SaleFT", "ProductID")
 
 
 	output := graph.String()

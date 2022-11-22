@@ -14,7 +14,7 @@ type Dfm struct {
 /*
 Attributes for modify nodes in the DFM schema
 */
-var (
+var  (
 	DFM_nodeAtt = map[string]string{"shape":"circle"}
 	DFM_edgeAtt = map[string]string{"arrowhead":"none"}
 	DFM_factAtt =  map[string]string{"shape":"plain", "root":"true"}
@@ -62,7 +62,7 @@ func (d Dfm) CreateFact(title string, attributes []string) {
 /*
 Add a node with label = label to a node with label = attach
 */
-func (d Dfm) AddNode(label string, attach string) {
+func (d Dfm) AddDimension(label string, attach string) {
 	
 	node_att := DFM_nodeAtt
 	node_att["label"] = label
@@ -74,11 +74,11 @@ func (d Dfm) AddNode(label string, attach string) {
 /*
 Add multiple nodes with label = labels, starting from node with label = startAttach to the node with label = labels[len(labels)]
 */
-func (d Dfm) AddSequenceNode(labels []string, startAttach string) {
+func (d Dfm) AddSequenceDimension(labels []string, startAttach string) {
 
-	d.AddNode(labels[0], startAttach)
+	d.AddDimension(labels[0], startAttach)
 	for i := 0; i < len(labels)-1; i++ {
-		d.AddNode(labels[i+1], labels[i])
+		d.AddDimension(labels[i+1], labels[i])
 	}
 
 }
