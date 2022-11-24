@@ -2,6 +2,9 @@ package diagram
 
 import (
 	"github.com/awalterschulze/gographviz"
+
+	"log"
+	"os"
 )
 
 /*
@@ -142,4 +145,20 @@ func (d Dfm) AddSequenceDescriptive(labels []string, to string) {
 		d.AddDescriptive(label, to)
 	}
 
+}
+
+
+/*
+Render the diagram
+*/
+func (d Dfm) RenderDiagram() {
+	output := d.Graph.String()
+
+	f, err := os.Create("dot.dot")
+	if err != nil {
+        log.Fatal(err)
+    }
+
+	defer f.Close()
+	f.WriteString(output)
 }

@@ -2,6 +2,9 @@ package diagram
 
 import (
 	"github.com/awalterschulze/gographviz"
+
+	"log"
+	"os"
 )
 
 /*
@@ -65,6 +68,21 @@ func (d Str) CreateFact(name string, keys []string, attributes []string) {
 func (d Str) AddDimension(name string, keys[]string, attributes []string, attach string, key string) {
 
 	d.CreateFact(name, keys, attributes)
-
 	d.Graph.AddPortEdge(attach, key, name, key, true, STR_edgeAtt)
+}
+
+
+/*
+Render the diagram
+*/
+func (d Str) RenderDiagram() {
+	output := d.Graph.String()
+
+	f, err := os.Create("dot.dot")
+	if err != nil {
+        log.Fatal(err)
+    }
+
+	defer f.Close()
+	f.WriteString(output)
 }

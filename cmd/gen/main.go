@@ -1,9 +1,6 @@
 package main
 
 import (
-	"log"
-	"os"
-
 	"github.com/leonardogonfiantini/bubbly/diagram"
 )
 
@@ -11,8 +8,6 @@ func main() {
 	
 
 	d := diagram.NewSTR()
-	graph := d.Graph
-
 
 	d.CreateFact("SaleFT", []string{"StoreID", "DateID", "ProductID"}, []string{"Quantity", "Receipts"})
 	
@@ -22,15 +17,5 @@ func main() {
 	d.AddDimension("ProductDT", []string{"ProductID"}, []string{"Product", "Type", "Category", "Supplier"}, "SaleFT", "ProductID")
 
 
-	output := graph.String()
-
-
-	f, err := os.Create("dot.dot")
-	if err != nil {
-        log.Fatal(err)
-    }
-
-	defer f.Close()
-	f.WriteString(output)
-
+	d.RenderDiagram()
 }
