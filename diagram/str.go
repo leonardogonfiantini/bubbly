@@ -20,7 +20,6 @@ Attributes for modify nodes in the STR schema
 var (
 	STR_factAtt =  map[string]string{"shape":"plaintext", "root":"true"}
 	STR_edgeAtt = map[string]string{"arrowhead":"none"}
-
 )
 
 /*
@@ -42,14 +41,19 @@ func NewSTR() *Str {
 }
 
 /*
-Create a fact to the schema with title = title and attributes = attributes
+Create a fact to the schema with title = name and attributes = attributes, keys = keys, table_color =  color of the table,
+keys-colors the color of any key, if nil the color are the color of table, if len(keys_color) < keys return an error
 */
-func (d Str) CreateFact(name string, keys []string, attributes []string) {
+func (d Str) CreateFact(name string, keys []string, attributes []string, keys_color []string, table_color string) {
+
+	if (len(keys) != len(keys_color)) {
+		log.Fatal("Number of keys and number of colors for keys are different in table: "+name)
+	}
+
+	label := `<<table border="0" bgcolor="`+table_color+`" cellborder="1" cellspacing="0" cellpadding="20">`
 	
-	label := `<<table border="0" cellborder="1" cellspacing="0" cellpadding="20">`
-	
-	for _, key := range(keys) {
-		label += `<tr> <td port="`+key+`"> <u>`+key+`</u> </td> </tr>`
+	for i, key := range(keys) {
+		label += `<tr> <td bgcolor="`+keys_color[i]+`" port="`+key+`"> <u>`+key+`</u> </td> </tr>`
 	}
 	
 	for _, att := range(attributes) {
@@ -65,9 +69,13 @@ func (d Str) CreateFact(name string, keys []string, attributes []string) {
 	d.Graph.AddNode("G", name, fact_att)
 }
 
-func (d Str) AddDimension(name string, keys[]string, attributes []string, attach string, key string) {
+/*
+Add a dimension to the schema, with name = name, attributes of table = attributes, keys = keys, key = at what type of key attach 
+the dimension, keys-colors the color of any key, if nil the color are the color of table, if len(keys_color) < keys return an error
+*/
+func (d Str) AddDimension(name string, keys[]string, attributes []string, attach string, key string, keys_color []string, table_color string) {
 
-	d.CreateFact(name, keys, attributes)
+	d.CreateFact(name, keys, attributes, keys_color, table_color)
 	d.Graph.AddPortEdge(attach, key, name, key, true, STR_edgeAtt)
 }
 

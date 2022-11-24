@@ -12,14 +12,18 @@
 <!-- SaleFT -->
 <g id="node1" class="node">
 <title>SaleFT</title>
+<polygon fill="lime" stroke="transparent" points="283.81,-329.17 283.81,-614.17 408.81,-614.17 408.81,-329.17 283.81,-329.17"/>
+<polygon fill="yellow" stroke="transparent" points="284.31,-556.67 284.31,-613.67 409.31,-613.67 409.31,-556.67 284.31,-556.67"/>
 <polygon fill="none" stroke="black" points="284.31,-556.67 284.31,-613.67 409.31,-613.67 409.31,-556.67 284.31,-556.67"/>
 <text text-anchor="start" x="313.81" y="-582.47" font-family="Times,serif" font-size="14.00"> </text>
 <text text-anchor="start" x="318.81" y="-582.47" font-family="Times,serif" text-decoration="underline" font-size="14.00">StoreID</text>
 <text text-anchor="start" x="374.81" y="-582.47" font-family="Times,serif" font-size="14.00"> </text>
+<polygon fill="green" stroke="transparent" points="284.31,-499.67 284.31,-556.67 409.31,-556.67 409.31,-499.67 284.31,-499.67"/>
 <polygon fill="none" stroke="black" points="284.31,-499.67 284.31,-556.67 409.31,-556.67 409.31,-499.67 284.31,-499.67"/>
 <text text-anchor="start" x="316.31" y="-525.47" font-family="Times,serif" font-size="14.00"> </text>
 <text text-anchor="start" x="321.31" y="-525.47" font-family="Times,serif" text-decoration="underline" font-size="14.00">DateID</text>
 <text text-anchor="start" x="372.31" y="-525.47" font-family="Times,serif" font-size="14.00"> </text>
+<polygon fill="red" stroke="transparent" points="284.31,-442.67 284.31,-499.67 409.31,-499.67 409.31,-442.67 284.31,-442.67"/>
 <polygon fill="none" stroke="black" points="284.31,-442.67 284.31,-499.67 409.31,-499.67 409.31,-442.67 284.31,-442.67"/>
 <text text-anchor="start" x="305.31" y="-468.47" font-family="Times,serif" font-size="14.00"> </text>
 <text text-anchor="start" x="310.31" y="-468.47" font-family="Times,serif" text-decoration="underline" font-size="14.00">ProductID</text>
@@ -33,6 +37,8 @@
 <!-- DateDT -->
 <g id="node2" class="node">
 <title>DateDT</title>
+<polygon fill="green" stroke="transparent" points="659.81,-386.17 659.81,-557.17 762.81,-557.17 762.81,-386.17 659.81,-386.17"/>
+<polygon fill="green" stroke="transparent" points="660.31,-499.67 660.31,-556.67 763.31,-556.67 763.31,-499.67 660.31,-499.67"/>
 <polygon fill="none" stroke="black" points="660.31,-499.67 660.31,-556.67 763.31,-556.67 763.31,-499.67 660.31,-499.67"/>
 <text text-anchor="start" x="681.31" y="-525.47" font-family="Times,serif" font-size="14.00"> </text>
 <text text-anchor="start" x="686.31" y="-525.47" font-family="Times,serif" text-decoration="underline" font-size="14.00">DateID</text>
@@ -51,6 +57,8 @@
 <!-- StoreDT -->
 <g id="node3" class="node">
 <title>StoreDT</title>
+<polygon fill="yellow" stroke="transparent" points="108,-654.33 108,-939.33 253,-939.33 253,-654.33 108,-654.33"/>
+<polygon fill="yellow" stroke="transparent" points="108.5,-881.83 108.5,-938.83 253.5,-938.83 253.5,-881.83 108.5,-881.83"/>
 <polygon fill="none" stroke="black" points="108.5,-881.83 108.5,-938.83 253.5,-938.83 253.5,-881.83 108.5,-881.83"/>
 <text text-anchor="start" x="148" y="-907.63" font-family="Times,serif" font-size="14.00"> </text>
 <text text-anchor="start" x="153" y="-907.63" font-family="Times,serif" text-decoration="underline" font-size="14.00">StoreID</text>
@@ -73,6 +81,8 @@
 <!-- ProductDT -->
 <g id="node4" class="node">
 <title>ProductDT</title>
+<polygon fill="red" stroke="transparent" points="118,-4 118,-289 243,-289 243,-4 118,-4"/>
+<polygon fill="red" stroke="transparent" points="118.5,-231.5 118.5,-288.5 243.5,-288.5 243.5,-231.5 118.5,-231.5"/>
 <polygon fill="none" stroke="black" points="118.5,-231.5 118.5,-288.5 243.5,-288.5 243.5,-231.5 118.5,-231.5"/>
 <text text-anchor="start" x="139.5" y="-257.3" font-family="Times,serif" font-size="14.00"> </text>
 <text text-anchor="start" x="144.5" y="-257.3" font-family="Times,serif" text-decoration="underline" font-size="14.00">ProductID</text>

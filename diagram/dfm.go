@@ -144,9 +144,7 @@ func (d Dfm) AddSequenceDescriptive(labels []string, to string) {
 	for _, label := range labels {
 		d.AddDescriptive(label, to)
 	}
-
 }
-
 
 /*
 Render the diagram
