@@ -18,7 +18,7 @@ DFM:
 
 STR:
 - [x] fact and table
-- [ ] colors
+- [x] colors
 
 other diagrams:
 - [ ] nn
