@@ -1,11 +1,7 @@
 digraph G {
 	layout="circo";
-	SaleFT:DateID->DateDT:DateID[ arrowhead=none ];
-	SaleFT:StoreID->StoreDT:StoreID[ arrowhead=none ];
-	SaleFT:ProductID->ProductDT:ProductID[ arrowhead=none ];
-	DateDT [ label=<<table border="0" bgcolor="green" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="green" port="DateID"> <u>DateID</u> </td> </tr><tr> <td port="Date">Date</td> </tr><tr> <td port="Month">Month</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">DateDT</font>> ];
-	ProductDT [ label=<<table border="0" bgcolor="red" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="red" port="ProductID"> <u>ProductID</u> </td> </tr><tr> <td port="Product">Product</td> </tr><tr> <td port="Type">Type</td> </tr><tr> <td port="Category">Category</td> </tr><tr> <td port="Supplier">Supplier</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">ProductDT</font>> ];
-	SaleFT [ label=<<table border="0" bgcolor="lime" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="yellow" port="StoreID"> <u>StoreID</u> </td> </tr><tr> <td bgcolor="green" port="DateID"> <u>DateID</u> </td> </tr><tr> <td bgcolor="red" port="ProductID"> <u>ProductID</u> </td> </tr><tr> <td port="Quantity">Quantity</td> </tr><tr> <td port="Receipts">Receipts</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">SaleFT</font>> ];
-	StoreDT [ label=<<table border="0" bgcolor="yellow" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="yellow" port="StoreID"> <u>StoreID</u> </td> </tr><tr> <td port="Store">Store</td> </tr><tr> <td port="City">City</td> </tr><tr> <td port="Country">Country</td> </tr><tr> <td port="SalesManager">SalesManager</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">StoreDT</font>> ];
+	factDT:key2->dim2DT:key2[ arrowhead=none ];
+	dim2DT [ label=<<table border="0" bgcolor="blue" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="red" port="key2"> <u>key2</u> </td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">dim2DT</font>> ];
+	factDT [ label=<<table border="0" bgcolor="green" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="red" port="key1"> <u>key1</u> </td> </tr><tr> <td bgcolor="blue" port="key2"> <u>key2</u> </td> </tr><tr> <td port="att1">att1</td> </tr><tr> <td port="att2">att2</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">factDT</font>> ];
 
 }

@@ -9,11 +9,14 @@ func main() {
 
 	d := diagram.NewSTR()
 
-	d.CreateFact("SaleFT", []string{"StoreID", "DateID", "ProductID"}, []string{"Quantity", "Receipts"}, []string{"yellow", "green", "red"}, "lime")
-	
-	d.AddDimension("DateDT", []string{"DateID"}, []string{"Date", "Month"}, "SaleFT", "DateID", []string{"green"}, "green")
-	d.AddDimension("StoreDT", []string{"StoreID"}, []string{"Store", "City", "Country", "SalesManager"}, "SaleFT", "StoreID", []string{"yellow"}, "yellow")
-	d.AddDimension("ProductDT", []string{"ProductID"}, []string{"Product", "Type", "Category", "Supplier"}, "SaleFT", "ProductID", []string{"red"}, "red")
+	fact := d.CreateDimension("factDT", []string{"key1", "key2"}, []string{"att1", "att2"}, []string{"red", "blue"}, "green")
+	d.RenderDimension(fact)
+
+	dim2 := d.CreateDimension("dim2DT", []string{"key2"}, nil, []string{"red"}, "blue")
+	d.RenderDimension(dim2)
+
+	d.JoinDimension(fact, dim2, "key2")
+
 
 	d.RenderDiagram()
 }
