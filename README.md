@@ -25,7 +25,7 @@ func main() {
 }
 ```
 
-![str_schema_look](str_schema_look.png)
+![str_schema_look](str_schema_look.png | 300x300)
 
 
 
