@@ -4,7 +4,7 @@ Bubbly is a library written in go that use gographviz to create diagrams by just
 
 
 Star schema:
-![star_schema](star_schema_look.png)
+![star_schema_look](star_schema_look.png)
 
 
 
