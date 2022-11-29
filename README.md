@@ -25,8 +25,7 @@ func main() {
 }
 ```
 
-![](str_schema_look.png | width=50)
-
+<img src="str_schema_look.png" width="50" height="50">
 
 
 what bubbly needs to be complete:
