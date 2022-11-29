@@ -8,7 +8,6 @@ Star schema:
 
 ```go
 func main() {
-	
 
 	d := diagram.NewSTR()
 
