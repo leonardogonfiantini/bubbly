@@ -2,6 +2,12 @@
 
 Bubbly is a library written in go that use gographviz to create diagrams by just writing it and not wasting your time by dragging lines and reposition every time by hand all your schema at every modify.
 
+
+Star schema:
+![star_schema](star_schema.png)
+
+
+
 what bubbly needs to be complete:
 
 DFM:
