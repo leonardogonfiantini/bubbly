@@ -3,6 +3,7 @@ package diagram
 import (
 	"github.com/awalterschulze/gographviz"
 
+	"strings"
 	"log"
 	"os"
 )
@@ -12,6 +13,11 @@ Struct for DFM schema
 */
 type Dfm struct {
 	Graph *gographviz.Graph	 //graph
+}
+
+type Fact struct {
+	name string
+	attributes []string
 }
 
 /*
@@ -48,40 +54,56 @@ func NewDFM() *Dfm {
 /*
 Create a fact to the schema with title = title and attributes = attiributes
 */
-func (d Dfm) CreateFact(title string, attributes []string) {
+func (schema *Dfm) CreateFact(title string, attributes string) *Fact {
 
-	label := `<<table border="0" cellborder="1" cellspacing="0" cellpadding="20"> <tr> <td bgcolor="lightblue">`+title+`</td> </tr>`
-	for _, att := range(attributes) {
-		label += `<tr> <td port="port.`+att+`">`+att+`</td> </tr>`
+	t_attributes := strings.Split(attributes, " ")
+
+	return &Fact {
+		title,
+		t_attributes,
+	}
+}
+
+func (schema *Dfm) RenderFact(f *Fact) {
+
+	label := `<<table border="0" cellborder="1" cellspacing="0" cellpadding="20"> <tr> <td bgcolor="lightblue">`+f.name+`</td> </tr>`
+	for _, att := range(f.attributes) {
+		label += `<tr> <td>`+att+`</td> </tr>`
 	}
 	label += `</table>>`
 
 	fact_att := DFM_factAtt
 	fact_att["label"] = label
 
-	d.Graph.AddNode("G", title, fact_att)
+	schema.Graph.AddNode("G", f.name, fact_att)
 }
 
 /*
 Add a node with label = label to a node with label = attach
 */
-func (d Dfm) AddDimension(label string, attach string) {
+func (schema *Dfm) AddDimension(label string, attach string) {
 	
 	node_att := DFM_nodeAtt
 	node_att["label"] = label
 
-	d.Graph.AddNode("G", label, node_att)
-	d.Graph.AddEdge(attach, label, true, DFM_edgeAtt)
+	schema.Graph.AddNode("G", label, node_att)
+	schema.Graph.AddEdge(attach, label, true, DFM_edgeAtt)
 }
 
+
+/* 
+   ######################################
+		refactor all the functions
+   ###################################### 
+*/
 /*
 Add multiple nodes with label = labels, starting from node with label = startAttach to the node with label = labels[len(labels)]
 */
-func (d Dfm) AddSequenceDimension(labels []string, startAttach string) {
+func (schema *Dfm) AddSequenceDimension(labels []string, startAttach string) {
 
-	d.AddDimension(labels[0], startAttach)
+	schema.AddDimension(labels[0], startAttach)
 	for i := 0; i < len(labels)-1; i++ {
-		d.AddDimension(labels[i+1], labels[i])
+		schema.AddDimension(labels[i+1], labels[i])
 	}
 
 }
@@ -89,28 +111,28 @@ func (d Dfm) AddSequenceDimension(labels []string, startAttach string) {
 /*
 Add a convergence node with label = label to a node with label = attach
 */
-func (d Dfm) AddConvergence(label string, attach string) {
+func (schema *Dfm) AddConvergence(label string, attach string) {
 	node_att := DFM_nodeAtt
 	node_att["label"] = label
 
-	d.Graph.AddNode("G", label, node_att)
-	d.Graph.AddEdge(attach, label, true, nil)
+	schema.Graph.AddNode("G", label, node_att)
+	schema.Graph.AddEdge(attach, label, true, nil)
 }
 
 /*
 Add a hierachy with 2 or more node with label = labels starting from node with label = to
 */
-func (d Dfm) AddHierarchy(labels []string, from string, to string) {
+func (schema *Dfm) AddHierarchy(labels []string, from string, to string) {
 
 	node_att := DFM_nodeAtt
 	node_att["label"] = to
 
-	d.Graph.AddNode("G", to, node_att)
+	schema.Graph.AddNode("G", to, node_att)
 
 	for _, label := range labels {
 		tmpAtt := DFM_hierarchyAtt
 		tmpAtt["label"] = label
-		d.Graph.AddEdge(from, to, true, tmpAtt)
+		schema.Graph.AddEdge(from, to, true, tmpAtt)
 	}
 
 }
@@ -118,39 +140,39 @@ func (d Dfm) AddHierarchy(labels []string, from string, to string) {
 /*
 Add an optional node with label = label starting from a node with label = attach
 */
-func (d Dfm) AddOptional(label string, attach string) {
+func (schema *Dfm) AddOptional(label string, attach string) {
 
 	node_att := DFM_nodeAtt
 	node_att["label"] = label
 
-	d.Graph.AddNode("G", label, node_att)
-	d.Graph.AddEdge(attach, label, true, DFM_optionalAtt)
+	schema.Graph.AddNode("G", label, node_att)
+	schema.Graph.AddEdge(attach, label, true, DFM_optionalAtt)
 }
 
 /*
 Add a new descriptive attribute with the label = label to a node with label = to
 */
-func (d Dfm) AddDescriptive(label string, to string) {
+func (schema *Dfm) AddDescriptive(label string, to string) {
 
-	d.Graph.AddNode("G", label, DFM_descriptiveAtt)
-	d.Graph.AddEdge(to, label, true, DFM_edgeAtt)
+	schema.Graph.AddNode("G", label, DFM_descriptiveAtt)
+	schema.Graph.AddEdge(to, label, true, DFM_edgeAtt)
 }
 
 /*
 Add multiple descriptive attiributes with label = labels to a note with label = to
 */
-func (d Dfm) AddSequenceDescriptive(labels []string, to string) {
+func (schema *Dfm) AddSequenceDescriptive(labels []string, to string) {
 
 	for _, label := range labels {
-		d.AddDescriptive(label, to)
+		schema.AddDescriptive(label, to)
 	}
 }
 
 /*
 Render the diagram
 */
-func (d Dfm) RenderDiagram() {
-	output := d.Graph.String()
+func (schema *Dfm) RenderDiagram() {
+	output := schema.Graph.String()
 
 	f, err := os.Create("dot.dot")
 	if err != nil {

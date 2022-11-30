@@ -9,7 +9,7 @@ import (
 )
 
 
-var colors = []string{"crimson", "darkcyan", "green"}
+var colors = []string{"crimson", "darkcyan", "green", "brown", "beige", "gold", "indigo", "lime", "magenta", "navy", "yellow", "cornflowerblue"}
 
 /*
 Struct for STR schema
@@ -17,7 +17,7 @@ Struct for STR schema
 type Str struct {
 	Graph *gographviz.Graph	
 	colors map[string]string
-	index_color uint8
+	index_color int
 }
 
 type Dimension struct {
@@ -57,19 +57,19 @@ func NewSTR() *Str {
 /*
 Create dimension
 */
-func (d *Str) CreateDimension(name string, keys string, attributes string) *Dimension {
+func (schema *Str) CreateDimension(name string, keys string, attributes string) *Dimension {
 	
 	t_keys := strings.Split(keys, " ")
 	t_attributes := strings.Split(attributes, " ")
 
 	
-	dimension := &Dimension{
+	dimension := &Dimension {
 		name,
 		t_keys,
 		t_attributes,
 	}
 
-	d.RenderDimension(dimension)
+	schema.RenderDimension(dimension)
 
 	return dimension
 }
@@ -78,9 +78,9 @@ func (d *Str) CreateDimension(name string, keys string, attributes string) *Dime
 Create a fact to the schema with title = name and attributes = attributes, keys = keys, table_color =  color of the table,
 keys-colors the color of any key, if nil the color are the color of table, if len(keys_color) < keys return an error
 */
-func (d *Str) RenderDimension(dim *Dimension) {
+func (schema *Str) RenderDimension(dim *Dimension) {
 
-	color := d.colors[dim.keys[0]]
+	color := schema.colors[dim.keys[0]]
 	if color == "" {
 		color = "white"
 	}
@@ -88,11 +88,11 @@ func (d *Str) RenderDimension(dim *Dimension) {
 	label := `<<table border="0" bgcolor="`+color+`" cellborder="1" cellspacing="0" cellpadding="20">`
 	
 	for _, key := range(dim.keys) {
-		color := d.colors[key]
+		color := schema.colors[key]
 		if color == "" {
-			color = colors[d.index_color]
-			d.colors[key] = color
-			d.index_color++
+			color = colors[schema.index_color % len(colors)]
+			schema.colors[key] = color
+			schema.index_color++
 		}
 
 		label += `<tr> <td bgcolor="`+color+`" port="`+key+`"> <u>`+key+`</u> </td> </tr>`
@@ -110,23 +110,23 @@ func (d *Str) RenderDimension(dim *Dimension) {
 	fact_att["xlabel"] = `<<font point-size="20">`+dim.name+`</font>>`
 	fact_att["label"] = label
 
-	d.Graph.AddNode("G", dim.name, fact_att)
+	schema.Graph.AddNode("G", dim.name, fact_att)
 }
 
 /*
 Add a dimension to the schema, with name = name, attributes of table = attributes, keys = keys, key = at what type of key attach 
 the dimension, keys-colors the color of any key, if nil the color are the color of table, if len(keys_color) < keys return an error
 */
-func (d *Str) JoinDimension(d1 *Dimension, d2 *Dimension, portKey string) {
-	d.Graph.AddPortEdge(d1.name, portKey, d2.name, portKey, true, STR_edgeAtt)
+func (schema *Str) JoinDimension(d1 *Dimension, d2 *Dimension, portKey string) {
+	schema.Graph.AddPortEdge(d1.name, portKey, d2.name, portKey, true, STR_edgeAtt)
 }
 
 
 /*
 Render the diagram
 */
-func (d *Str) RenderDiagram() {
-	output := d.Graph.String()
+func (schema *Str) RenderDiagram() {
+	output := schema.Graph.String()
 
 	f, err := os.Create("dot.dot")
 	if err != nil {

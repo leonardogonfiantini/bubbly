@@ -1,7 +1,11 @@
 digraph G {
 	layout="circo";
-	factDT:key2->dim2DT:key2[ arrowhead=none ];
-	dim2DT [ label=<<table border="0" bgcolor="darkcyan" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="darkcyan" port="key2"> <u>key2</u> </td> </tr><tr> <td bgcolor="green" port="key4"> <u>key4</u> </td> </tr><tr> <td port="keys">keys</td> </tr><tr> <td port="ok">ok</td> </tr><tr> <td port="ok">ok</td> </tr><tr> <td port="ok">ok</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">dim2DT</font>> ];
-	factDT [ label=<<table border="0" bgcolor="white" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="crimson" port="key1"> <u>key1</u> </td> </tr><tr> <td bgcolor="darkcyan" port="key2"> <u>key2</u> </td> </tr><tr> <td port="att1">att1</td> </tr><tr> <td port="att2">att2</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">factDT</font>> ];
+	SaleFT:DateID->WeekDT:DateID[ arrowhead=none ];
+	SaleFT:StoreID->StoreDT:StoreID[ arrowhead=none ];
+	SaleFT:ProductID->ProductDT:ProductID[ arrowhead=none ];
+	ProductDT [ label=<<table border="0" bgcolor="green" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="green" port="ProductID"> <u>ProductID</u> </td> </tr><tr> <td port="Product">Product</td> </tr><tr> <td port="Type">Type</td> </tr><tr> <td port="Category">Category</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">ProductDT</font>> ];
+	SaleFT [ label=<<table border="0" bgcolor="white" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="crimson" port="StoreID"> <u>StoreID</u> </td> </tr><tr> <td bgcolor="darkcyan" port="DateID"> <u>DateID</u> </td> </tr><tr> <td bgcolor="green" port="ProductID"> <u>ProductID</u> </td> </tr><tr> <td port="quantity">quantity</td> </tr><tr> <td port="Receipts">Receipts</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">SaleFT</font>> ];
+	StoreDT [ label=<<table border="0" bgcolor="crimson" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="crimson" port="StoreID"> <u>StoreID</u> </td> </tr><tr> <td port="Store">Store</td> </tr><tr> <td port="City">City</td> </tr><tr> <td port="Country">Country</td> </tr><tr> <td port="SalesManager">SalesManager</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">StoreDT</font>> ];
+	WeekDT [ label=<<table border="0" bgcolor="darkcyan" cellborder="1" cellspacing="0" cellpadding="20"><tr> <td bgcolor="darkcyan" port="DateID"> <u>DateID</u> </td> </tr><tr> <td port="Date">Date</td> </tr><tr> <td port="Month">Month</td> </tr></table>>, root=true, shape=plaintext, xlabel=<<font point-size="20">WeekDT</font>> ];
 
 }
