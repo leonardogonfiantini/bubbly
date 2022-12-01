@@ -55,7 +55,7 @@ func NewSTR() *Str {
 }
 
 /*
-Create dimension
+Create a new object *Dimension to use for creating dimension on schema
 */
 func (schema *Str) CreateDimension(name string, keys string, attributes string) *Dimension {
 	
@@ -75,8 +75,7 @@ func (schema *Str) CreateDimension(name string, keys string, attributes string) 
 }
 
 /*
-Create a fact to the schema with title = name and attributes = attributes, keys = keys, table_color =  color of the table,
-keys-colors the color of any key, if nil the color are the color of table, if len(keys_color) < keys return an error
+Render the dimension
 */
 func (schema *Str) RenderDimension(dim *Dimension) {
 
@@ -114,8 +113,7 @@ func (schema *Str) RenderDimension(dim *Dimension) {
 }
 
 /*
-Add a dimension to the schema, with name = name, attributes of table = attributes, keys = keys, key = at what type of key attach 
-the dimension, keys-colors the color of any key, if nil the color are the color of table, if len(keys_color) < keys return an error
+Join two dimension by a portkey
 */
 func (schema *Str) JoinDimension(d1 *Dimension, d2 *Dimension, portKey string) {
 	schema.Graph.AddPortEdge(d1.name, portKey, d2.name, portKey, true, STR_edgeAtt)

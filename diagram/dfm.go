@@ -39,7 +39,6 @@ func NewDFM() *Dfm {
 
 	graphAst, _ := gographviz.ParseString(`digraph G { 
 		layout="circo"
-		overlap=false
 	}`)
 	graph := gographviz.NewGraph()
 	if err := gographviz.Analyse(graphAst, graph); err != nil {
@@ -52,18 +51,25 @@ func NewDFM() *Dfm {
 }
 
 /*
-Create a fact to the schema with title = title and attributes = attiributes
+Create an object *Fact to use for create a fact table in the schema
 */
 func (schema *Dfm) CreateFact(title string, attributes string) *Fact {
 
 	t_attributes := strings.Split(attributes, " ")
 
-	return &Fact {
+	fact := &Fact {
 		title,
 		t_attributes,
 	}
+
+
+	schema.RenderFact(fact)
+	return fact
 }
 
+/*
+Render the fact
+*/
 func (schema *Dfm) RenderFact(f *Fact) {
 
 	label := `<<table border="0" cellborder="1" cellspacing="0" cellpadding="20"> <tr> <td bgcolor="lightblue">`+f.name+`</td> </tr>`
@@ -83,8 +89,10 @@ Add a node with label = label to a node with label = attach
 */
 func (schema *Dfm) AddDimension(label string, attach string) {
 	
+	//refactor this
 	node_att := DFM_nodeAtt
-	node_att["label"] = label
+	node_att["label"] = "\"\n\n\n\n"+label+"\""
+	node_att["fixedsize"] = "true"
 
 	schema.Graph.AddNode("G", label, node_att)
 	schema.Graph.AddEdge(attach, label, true, DFM_edgeAtt)
