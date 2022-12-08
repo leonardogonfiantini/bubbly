@@ -91,7 +91,8 @@ func (schema *Dfm) AddDimension(label string, attach string) {
 	
 	//refactor this
 	node_att := DFM_nodeAtt
-	node_att["label"] = "\"\n\n\n\n"+label+"\""
+	node_att["xlabel"] = label
+	node_att["label"] = "\"\""
 	node_att["fixedsize"] = "true"
 
 	schema.Graph.AddNode("G", label, node_att)
@@ -99,19 +100,16 @@ func (schema *Dfm) AddDimension(label string, attach string) {
 }
 
 
-/* 
-   ######################################
-		refactor all the functions
-   ###################################### 
-*/
 /*
 Add multiple nodes with label = labels, starting from node with label = startAttach to the node with label = labels[len(labels)]
 */
-func (schema *Dfm) AddSequenceDimension(labels []string, startAttach string) {
+func (schema *Dfm) AddSequenceDimension(labels string, startAttach string) {
 
-	schema.AddDimension(labels[0], startAttach)
-	for i := 0; i < len(labels)-1; i++ {
-		schema.AddDimension(labels[i+1], labels[i])
+	arr_labels := strings.Split(labels, " ")
+
+	schema.AddDimension(arr_labels[0], startAttach)
+	for i := 0; i < len(arr_labels)-1; i++ {
+		schema.AddDimension(arr_labels[i+1], arr_labels[i])
 	}
 
 }
@@ -130,14 +128,14 @@ func (schema *Dfm) AddConvergence(label string, attach string) {
 /*
 Add a hierachy with 2 or more node with label = labels starting from node with label = to
 */
-func (schema *Dfm) AddHierarchy(labels []string, from string, to string) {
+func (schema *Dfm) AddHierarchy(labels string, from string, to string) {
 
 	node_att := DFM_nodeAtt
 	node_att["label"] = to
 
 	schema.Graph.AddNode("G", to, node_att)
 
-	for _, label := range labels {
+	for _, label := range strings.Split(labels, " ") {
 		tmpAtt := DFM_hierarchyAtt
 		tmpAtt["label"] = label
 		schema.Graph.AddEdge(from, to, true, tmpAtt)
@@ -169,9 +167,9 @@ func (schema *Dfm) AddDescriptive(label string, to string) {
 /*
 Add multiple descriptive attiributes with label = labels to a note with label = to
 */
-func (schema *Dfm) AddSequenceDescriptive(labels []string, to string) {
+func (schema *Dfm) AddSequenceDescriptive(labels string, to string) {
 
-	for _, label := range labels {
+	for _, label := range strings.Split(labels, " ") {
 		schema.AddDescriptive(label, to)
 	}
 }

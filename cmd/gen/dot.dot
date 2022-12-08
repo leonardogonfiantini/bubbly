@@ -6,36 +6,24 @@ digraph G {
 	dimension2->dimension4[ arrowhead=none ];
 	dimension4->dimension5[ arrowhead=none ];
 	dimension4->dimension6[ arrowhead=none ];
-	dimension1 [ fixedsize=true, label="
-
-
-
-dimension1", shape=circle ];
-	dimension2 [ fixedsize=true, label="
-
-
-
-dimension2", shape=circle ];
-	dimension3 [ fixedsize=true, label="
-
-
-
-dimension3", shape=circle ];
-	dimension4 [ fixedsize=true, label="
-
-
-
-dimension4", shape=circle ];
-	dimension5 [ fixedsize=true, label="
-
-
-
-dimension5", shape=circle ];
-	dimension6 [ fixedsize=true, label="
-
-
-
-dimension6", shape=circle ];
+	factTable->dimension7[ arrowhead=none ];
+	factTable->dimension8[ arrowhead=none ];
+	dimension7->dimension9[ arrowhead=none ];
+	dimension7->dimension10[ arrowhead=none ];
+	dimension10->dimension11[ arrowhead=none ];
+	dimension8->dimension12[ arrowhead=none ];
+	dimension1 [ fixedsize=true, label="", shape=circle, xlabel=dimension1 ];
+	dimension10 [ fixedsize=true, label="", shape=circle, xlabel=dimension10 ];
+	dimension11 [ fixedsize=true, label="", shape=circle, xlabel=dimension11 ];
+	dimension12 [ fixedsize=true, label="", shape=circle, xlabel=dimension12 ];
+	dimension2 [ fixedsize=true, label="", shape=circle, xlabel=dimension2 ];
+	dimension3 [ fixedsize=true, label="", shape=circle, xlabel=dimension3 ];
+	dimension4 [ fixedsize=true, label="", shape=circle, xlabel=dimension4 ];
+	dimension5 [ fixedsize=true, label="", shape=circle, xlabel=dimension5 ];
+	dimension6 [ fixedsize=true, label="", shape=circle, xlabel=dimension6 ];
+	dimension7 [ fixedsize=true, label="", shape=circle, xlabel=dimension7 ];
+	dimension8 [ fixedsize=true, label="", shape=circle, xlabel=dimension8 ];
+	dimension9 [ fixedsize=true, label="", shape=circle, xlabel=dimension9 ];
 	factTable [ label=<<table border="0" cellborder="1" cellspacing="0" cellpadding="20"> <tr> <td bgcolor="lightblue">factTable</td> </tr><tr> <td>att1</td> </tr><tr> <td>att2</td> </tr><tr> <td>att3</td> </tr><tr> <td>att4</td> </tr></table>>, root=true, shape=plain ];
 
 }

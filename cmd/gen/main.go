@@ -18,6 +18,14 @@ func main() {
 	d.AddDimension("dimension5", "dimension4")
 	d.AddDimension("dimension6", "dimension4")
 
+	d.AddDimension("dimension7", "factTable")
+	d.AddDimension("dimension8", "factTable")
+	d.AddDimension("dimension9", "dimension7")
+	d.AddDimension("dimension10", "dimension7")
+	d.AddDimension("dimension11", "dimension10")
+	d.AddDimension("dimension12", "dimension8")
+
+
 
 	d.RenderDiagram()
 }
