@@ -9,23 +9,29 @@ func main() {
 
 	d := diagram.NewDFM()
 
-	d.CreateFact("factTable", "att1 att2 att3 att4")
+	d.CreateFact("SALE", "quantity receipts numberOfCustomers unitPrice")
 
-	d.AddDimension("dimension1", "factTable")
-	d.AddDimension("dimension2", "dimension1")
-	d.AddDimension("dimension3", "dimension2")
-	d.AddDimension("dimension4", "dimension2")
-	d.AddDimension("dimension5", "dimension4")
-	d.AddDimension("dimension6", "dimension4")
+	d.AddSequenceDimension("store storeCity state country", "SALE")
+	d.AddSequenceDimension("date month quarter", "SALE")
+	d.AddSequenceDimension("product type", "SALE")
 
-	d.AddDimension("dimension7", "factTable")
-	d.AddDimension("dimension8", "factTable")
-	d.AddDimension("dimension9", "dimension7")
-	d.AddDimension("dimension10", "dimension7")
-	d.AddDimension("dimension11", "dimension10")
-	d.AddDimension("dimension12", "dimension8")
+	d.AddDimension("salesManager", "store")
+	d.AddDimension("salesDistrict", "store")
+	d.AddSequenceDescriptive("address telephone", "store")
 
+	d.AddDimension("day", "date")
+	d.AddDimension("week", "date")
+	d.AddDimension("holiday", "date")
+	d.AddDimension("year", "quarter")
 
+	d.AddOptional("diet", "product")
+	d.AddDescriptive("weight", "product")
+	d.AddSequenceDimension("brand brandCity", "product")
+	
+	d.AddSequenceDimension("category department", "type")
+	d.AddDescriptive("departmentHead", "department")
+	d.AddDimension("marketingGroup", "type")
+	d.AddDescriptive("director", "marketingGroup")
 
 	d.RenderDiagram()
 }

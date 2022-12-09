@@ -25,7 +25,7 @@ Attributes for modify nodes in the DFM schema
 */
 var  (
 	DFM_nodeAtt = map[string]string{"shape":"circle"}
-	DFM_edgeAtt = map[string]string{"arrowhead":"none"}
+	DFM_edgeAtt = map[string]string{"arrowhead":"none", "len":"0.5"}
 	DFM_factAtt =  map[string]string{"shape":"plain", "root":"true"}
 	DFM_descriptiveAtt = map[string]string{"shape":"underline"}
 	DFM_optionalAtt = map[string]string{"arrowhead":"icurve"}
@@ -38,7 +38,8 @@ Create a new object *Dfm to use for creating the dfm schema
 func NewDFM() *Dfm {
 
 	graphAst, _ := gographviz.ParseString(`digraph G { 
-		layout="circo"
+		layout=twopi;
+		ranksep=2.75;
 	}`)
 	graph := gographviz.NewGraph()
 	if err := gographviz.Analyse(graphAst, graph); err != nil {
