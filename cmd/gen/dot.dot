@@ -1,7 +1,7 @@
 digraph G {
 	layout=twopi;
-	nodesep=0.1;
-	ranksep=2.75;
+	overlap=prism;
+	overlap_scaling=4.5;
 	SALE->store[ arrowhead=none, len=0.5 ];
 	store->storeCity[ arrowhead=none, len=0.5 ];
 	storeCity->state[ arrowhead=none, len=0.5 ];

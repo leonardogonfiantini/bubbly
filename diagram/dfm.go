@@ -39,7 +39,8 @@ func NewDFM() *Dfm {
 
 	graphAst, _ := gographviz.ParseString(`digraph G { 
 		layout=twopi;
-		ranksep=2.75;
+		overlap=prism;
+		overlap_scaling=4.5;
 	}`)
 	graph := gographviz.NewGraph()
 	if err := gographviz.Analyse(graphAst, graph); err != nil {
