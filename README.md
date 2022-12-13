@@ -25,7 +25,7 @@ func main() {
 }
 ```
 
-<img src="str_schema_look.png" width="60%">
+<img src="str_schema_look.png" width="100%">
 
 ```go
 func main() {
@@ -60,7 +60,7 @@ func main() {
 }
 ```
 
-<img src="dfm_schema_look.png" width="60%">
+<img src="dfm_schema_look.png" width="100%">
 
 
 
