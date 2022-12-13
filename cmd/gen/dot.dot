@@ -38,7 +38,7 @@ digraph G {
 	day [ fixedsize=true, label="", shape=circle, xlabel=day ];
 	department [ fixedsize=true, label="", shape=circle, xlabel=department ];
 	departmentHead [ shape=underline ];
-	diet [ fixedsize=true, label=diet, shape=circle, xlabel=year ];
+	diet [ fixedsize=true, label="", shape=circle, xlabel=diet ];
 	director [ shape=underline ];
 	holiday [ fixedsize=true, label="", shape=circle, xlabel=holiday ];
 	marketingGroup [ fixedsize=true, label="", shape=circle, xlabel=marketingGroup ];

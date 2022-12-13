@@ -24,7 +24,7 @@ type Fact struct {
 Attributes for modify nodes in the DFM schema
 */
 var  (
-	DFM_nodeAtt = map[string]string{"shape":"circle"}
+	DFM_nodeAtt = map[string]string{"shape":"circle", "label":"\"\""}
 	DFM_edgeAtt = map[string]string{"arrowhead":"none", "len":"0.5"}
 	DFM_factAtt =  map[string]string{"shape":"plain", "root":"true"}
 	DFM_descriptiveAtt = map[string]string{"shape":"underline"}
@@ -94,7 +94,6 @@ func (schema *Dfm) AddDimension(label string, attach string) {
 	//refactor this
 	node_att := DFM_nodeAtt
 	node_att["xlabel"] = label
-	node_att["label"] = "\"\""
 	node_att["fixedsize"] = "true"
 
 	schema.Graph.AddNode("G", label, node_att)
@@ -121,7 +120,7 @@ Add a convergence node with label = label to a node with label = attach
 */
 func (schema *Dfm) AddConvergence(label string, attach string) {
 	node_att := DFM_nodeAtt
-	node_att["label"] = label
+	node_att["xlabel"] = label
 
 	schema.Graph.AddNode("G", label, node_att)
 	schema.Graph.AddEdge(attach, label, true, nil)
@@ -139,7 +138,7 @@ func (schema *Dfm) AddHierarchy(labels string, from string, to string) {
 
 	for _, label := range strings.Split(labels, " ") {
 		tmpAtt := DFM_hierarchyAtt
-		tmpAtt["label"] = label
+		tmpAtt["xlabel"] = label
 		schema.Graph.AddEdge(from, to, true, tmpAtt)
 	}
 
@@ -151,7 +150,7 @@ Add an optional node with label = label starting from a node with label = attach
 func (schema *Dfm) AddOptional(label string, attach string) {
 
 	node_att := DFM_nodeAtt
-	node_att["label"] = label
+	node_att["xlabel"] = label
 
 	schema.Graph.AddNode("G", label, node_att)
 	schema.Graph.AddEdge(attach, label, true, DFM_optionalAtt)
