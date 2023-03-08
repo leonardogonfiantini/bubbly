@@ -10,7 +10,7 @@ import (
 
 /*
 Struct Dfm defines the star schema and includes a pointer to 
-a grap.
+a graph.
 */
 type Dfm struct {
 	Graph *gographviz.Graph	 //graph
