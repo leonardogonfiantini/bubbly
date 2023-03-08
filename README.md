@@ -27,6 +27,11 @@ func main() {
 
 <img src="str_schema_look.png" width="100%">
 
+
+Dfm schema:
+
+
+
 ```go
 func main() {
 	

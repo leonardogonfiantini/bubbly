@@ -12,7 +12,8 @@ import (
 var colors = []string{"crimson", "darkcyan", "green", "brown", "beige", "gold", "indigo", "lime", "magenta", "navy", "yellow", "cornflowerblue"}
 
 /*
-Struct for STR schema
+Struct Str defines the star schema and includes a pointer to 
+a graph, a map of colors, and an index for the color array.
 */
 type Str struct {
 	Graph *gographviz.Graph	
@@ -20,6 +21,11 @@ type Str struct {
 	index_color int
 }
 
+
+/*
+Struct Dimension defines a dimension and includes a name, keys, 
+and attributes.
+*/
 type Dimension struct {
 	name string
 	keys []string
@@ -27,7 +33,8 @@ type Dimension struct {
 }
 
 /*
-Attributes for modify nodes in the STR schema
+Attributes are maps of attributes for modifying nodes and edges 
+in the star schema.
 */
 var (
 	STR_factAtt =  map[string]string{"shape":"plaintext", "root":"true"}
@@ -35,7 +42,7 @@ var (
 )
 
 /*
-Create a new object *Str to use for creating the star schema
+Function NewSTR creates a new Str object for creating the star schema.
 */
 func NewSTR() *Str {
 
@@ -55,7 +62,8 @@ func NewSTR() *Str {
 }
 
 /*
-Create a new object *Dimension to use for creating dimension on schema
+Function CreateDimension creates a new Dimension object and renders 
+the dimension in the schema.
 */
 func (schema *Str) CreateDimension(name string, keys string, attributes string) *Dimension {
 	
@@ -75,7 +83,7 @@ func (schema *Str) CreateDimension(name string, keys string, attributes string) 
 }
 
 /*
-Render the dimension
+Function RenderDimension renders a given dimension in the schema.
 */
 func (schema *Str) RenderDimension(dim *Dimension) {
 
@@ -113,7 +121,7 @@ func (schema *Str) RenderDimension(dim *Dimension) {
 }
 
 /*
-Join two dimension by a portkey
+Function JoinDimension joins two dimensions by a portkey.
 */
 func (schema *Str) JoinDimension(d1 *Dimension, d2 *Dimension, portKey string) {
 	schema.Graph.AddPortEdge(d1.name, portKey, d2.name, portKey, true, STR_edgeAtt)
@@ -121,7 +129,7 @@ func (schema *Str) JoinDimension(d1 *Dimension, d2 *Dimension, portKey string) {
 
 
 /*
-Render the diagram
+Function RenderDiagram renders the entire schema to a dot file.
 */
 func (schema *Str) RenderDiagram() {
 	output := schema.Graph.String()

@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/leonardogonfiantini/bubbly/diagram"
+	"github.com/leonardogonfiantini/goccia/diagram"
 )
 
 func main() {

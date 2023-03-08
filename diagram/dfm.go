@@ -9,19 +9,25 @@ import (
 )
 
 /*
-Struct for DFM schema
+Struct Dfm defines the star schema and includes a pointer to 
+a grap.
 */
 type Dfm struct {
 	Graph *gographviz.Graph	 //graph
 }
 
+/*
+Struct Fact defines a fact and includes a name 
+and atrributes.
+*/
 type Fact struct {
 	name string
 	attributes []string
 }
 
 /*
-Attributes for modify nodes in the DFM schema
+Attributes are maps of attributes for modifying nodes and edges 
+in the dfm schema.
 */
 var  (
 	DFM_nodeAtt = map[string]string{"shape":"circle", "label":"\"\""}
@@ -33,7 +39,7 @@ var  (
 )
 
 /*
-Create a new object *Dfm to use for creating the dfm schema
+Function NewDFM creates a new Dfm object for creating the dfm schema.
 */
 func NewDFM() *Dfm {
 
@@ -53,7 +59,8 @@ func NewDFM() *Dfm {
 }
 
 /*
-Create an object *Fact to use for create a fact table in the schema
+Function CreateFact creates a new Fact object and renders
+the fact in the schema
 */
 func (schema *Dfm) CreateFact(title string, attributes string) *Fact {
 
@@ -70,7 +77,7 @@ func (schema *Dfm) CreateFact(title string, attributes string) *Fact {
 }
 
 /*
-Render the fact
+Function RenderFact renders a given fact in the schema.
 */
 func (schema *Dfm) RenderFact(f *Fact) {
 
@@ -87,7 +94,7 @@ func (schema *Dfm) RenderFact(f *Fact) {
 }
 
 /*
-Add a node with label = label to a node with label = attach
+Function AddDimension adds a dimension in the schema
 */
 func (schema *Dfm) AddDimension(label string, attach string) {
 	
@@ -102,7 +109,8 @@ func (schema *Dfm) AddDimension(label string, attach string) {
 
 
 /*
-Add multiple nodes with label = labels, starting from node with label = startAttach to the node with label = labels[len(labels)]
+Function AddSequenceDimension adds a sequence of dimensions
+in the schema
 */
 func (schema *Dfm) AddSequenceDimension(labels string, startAttach string) {
 
@@ -116,7 +124,7 @@ func (schema *Dfm) AddSequenceDimension(labels string, startAttach string) {
 }
 
 /*
-Add a convergence node with label = label to a node with label = attach
+Function AddConvergence adds a convergence node in the schema
 */
 func (schema *Dfm) AddConvergence(label string, attach string) {
 	node_att := DFM_nodeAtt
@@ -127,7 +135,7 @@ func (schema *Dfm) AddConvergence(label string, attach string) {
 }
 
 /*
-Add a hierachy with 2 or more node with label = labels starting from node with label = to
+Function AddHierarchy adds a hyerarchy node in the schema
 */
 func (schema *Dfm) AddHierarchy(labels string, from string, to string) {
 
@@ -145,7 +153,7 @@ func (schema *Dfm) AddHierarchy(labels string, from string, to string) {
 }
 
 /*
-Add an optional node with label = label starting from a node with label = attach
+Function AddOptional adds an optional node in the schema
 */
 func (schema *Dfm) AddOptional(label string, attach string) {
 
@@ -157,7 +165,7 @@ func (schema *Dfm) AddOptional(label string, attach string) {
 }
 
 /*
-Add a new descriptive attribute with the label = label to a node with label = to
+Function AddDescriptive adds a descriptive node in the schema
 */
 func (schema *Dfm) AddDescriptive(label string, to string) {
 
@@ -166,7 +174,8 @@ func (schema *Dfm) AddDescriptive(label string, to string) {
 }
 
 /*
-Add multiple descriptive attiributes with label = labels to a note with label = to
+Function AddSequenceDescriptive adds a sequence of descreptive nodes
+in the schema
 */
 func (schema *Dfm) AddSequenceDescriptive(labels string, to string) {
 
@@ -176,7 +185,7 @@ func (schema *Dfm) AddSequenceDescriptive(labels string, to string) {
 }
 
 /*
-Render the diagram
+Function RenderDiagram renders the entire schema to a dot file
 */
 func (schema *Dfm) RenderDiagram() {
 	output := schema.Graph.String()

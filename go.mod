@@ -1,4 +1,4 @@
-module github.com/leonardogonfiantini/bubbly
+module github.com/leonardogonfiantini/goccia
 
 go 1.18
 
