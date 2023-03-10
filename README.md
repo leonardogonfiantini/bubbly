@@ -1,6 +1,6 @@
-## bubbly
+## goccia
 
-Bubbly is a library written in go that use gographviz to create diagrams by just writing it and not wasting your time by dragging lines and reposition every time by hand all your schema at every modify.
+Goccia is a library written in go that use gographviz to create diagrams by just writing it and not wasting your time by dragging lines and reposition every time by hand all your schema at every modify.
 
 
 Star schema:
@@ -71,7 +71,6 @@ func main() {
 ```go
 func main() {
 	
-
 	d := diagram.NewNN()
 
 	InputLayer := d.CreateInputLayer("InputLayer", 2)
