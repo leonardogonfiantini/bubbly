@@ -68,6 +68,30 @@ func main() {
 <img src="dfm_schema_look.png" width="100%">
 
 
+```go
+func main() {
+	
+
+	d := diagram.NewNN()
+
+	InputLayer := d.CreateInputLayer("InputLayer", 2)
+	
+	HiddenLayer1 := d.CreateHiddenLayer("HiddenLayer1", 4)
+	HiddenLayer2 := d.CreateHiddenLayer("HiddenLayer2", 82)
+	HiddenLayer3 := d.CreateHiddenLayer("HiddenLayer3", 4)
+	
+	OutputLayer := d.CreateOutputLayer("OutputLayer", 2)
+
+	d.ConnectLayers(InputLayer, HiddenLayer1)
+	d.ConnectLayers(HiddenLayer1, HiddenLayer2)
+	d.ConnectLayers(HiddenLayer2, HiddenLayer3)
+	d.ConnectLayers(HiddenLayer3, OutputLayer)
+	
+	d.RenderDiagram()
+}
+```
+<img src="nn_schema_look.png" widht="100%">
+
 
 what bubbly needs to be complete:
 
@@ -87,8 +111,15 @@ STR:
 - [x] fact and table
 - [x] colors
 
+NN:
+- [ ] convolutional nn
+- [ ] divide with boxes the layers
+- [x] InputLayer
+- [x] HiddenLayer
+- [x] OutputLayer
+
 other diagrams:
-- [ ] nn
+- [x] nn
 - [ ] er
 
 optional objectives:

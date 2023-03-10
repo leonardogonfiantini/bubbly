@@ -1,8 +1,131 @@
 digraph G {
-	layout="circo";
-	0 [ label="", shape=circle ];
-	1 [ label="", shape=circle ];
-	2 [ label="", shape=circle ];
-	3 [ label="", shape=circle ];
+	HInput0->InputLayer0;
+	HInput1->InputLayer1;
+	OutputLayer0->HOutput0;
+	OutputLayer1->HOutput1;
+	InputLayer0->HiddenLayer10[ arrowhead=none ];
+	InputLayer0->HiddenLayer11[ arrowhead=none ];
+	InputLayer0->HiddenLayer12[ arrowhead=none ];
+	InputLayer0->HiddenLayer13[ arrowhead=none ];
+	InputLayer1->HiddenLayer10[ arrowhead=none ];
+	InputLayer1->HiddenLayer11[ arrowhead=none ];
+	InputLayer1->HiddenLayer12[ arrowhead=none ];
+	InputLayer1->HiddenLayer13[ arrowhead=none ];
+	HiddenLayer10->HiddenLayer20[ arrowhead=none ];
+	HiddenLayer10->HiddenLayer21[ arrowhead=none ];
+	HiddenLayer10->HiddenLayer22[ arrowhead=none ];
+	HiddenLayer10->HiddenLayer23[ arrowhead=none ];
+	HiddenLayer10->HiddenLayer24[ arrowhead=none ];
+	HiddenLayer10->HiddenLayer25[ arrowhead=none ];
+	HiddenLayer10->HiddenLayer26[ arrowhead=none ];
+	HiddenLayer10->HiddenLayer27[ arrowhead=none ];
+	HiddenLayer11->HiddenLayer20[ arrowhead=none ];
+	HiddenLayer11->HiddenLayer21[ arrowhead=none ];
+	HiddenLayer11->HiddenLayer22[ arrowhead=none ];
+	HiddenLayer11->HiddenLayer23[ arrowhead=none ];
+	HiddenLayer11->HiddenLayer24[ arrowhead=none ];
+	HiddenLayer11->HiddenLayer25[ arrowhead=none ];
+	HiddenLayer11->HiddenLayer26[ arrowhead=none ];
+	HiddenLayer11->HiddenLayer27[ arrowhead=none ];
+	HiddenLayer12->HiddenLayer20[ arrowhead=none ];
+	HiddenLayer12->HiddenLayer21[ arrowhead=none ];
+	HiddenLayer12->HiddenLayer22[ arrowhead=none ];
+	HiddenLayer12->HiddenLayer23[ arrowhead=none ];
+	HiddenLayer12->HiddenLayer24[ arrowhead=none ];
+	HiddenLayer12->HiddenLayer25[ arrowhead=none ];
+	HiddenLayer12->HiddenLayer26[ arrowhead=none ];
+	HiddenLayer12->HiddenLayer27[ arrowhead=none ];
+	HiddenLayer13->HiddenLayer20[ arrowhead=none ];
+	HiddenLayer13->HiddenLayer21[ arrowhead=none ];
+	HiddenLayer13->HiddenLayer22[ arrowhead=none ];
+	HiddenLayer13->HiddenLayer23[ arrowhead=none ];
+	HiddenLayer13->HiddenLayer24[ arrowhead=none ];
+	HiddenLayer13->HiddenLayer25[ arrowhead=none ];
+	HiddenLayer13->HiddenLayer26[ arrowhead=none ];
+	HiddenLayer13->HiddenLayer27[ arrowhead=none ];
+	HiddenLayer20->HiddenLayer30[ arrowhead=none ];
+	HiddenLayer20->HiddenLayer31[ arrowhead=none ];
+	HiddenLayer20->HiddenLayer32[ arrowhead=none ];
+	HiddenLayer20->HiddenLayer33[ arrowhead=none ];
+	HiddenLayer21->HiddenLayer30[ arrowhead=none ];
+	HiddenLayer21->HiddenLayer31[ arrowhead=none ];
+	HiddenLayer21->HiddenLayer32[ arrowhead=none ];
+	HiddenLayer21->HiddenLayer33[ arrowhead=none ];
+	HiddenLayer22->HiddenLayer30[ arrowhead=none ];
+	HiddenLayer22->HiddenLayer31[ arrowhead=none ];
+	HiddenLayer22->HiddenLayer32[ arrowhead=none ];
+	HiddenLayer22->HiddenLayer33[ arrowhead=none ];
+	HiddenLayer23->HiddenLayer30[ arrowhead=none ];
+	HiddenLayer23->HiddenLayer31[ arrowhead=none ];
+	HiddenLayer23->HiddenLayer32[ arrowhead=none ];
+	HiddenLayer23->HiddenLayer33[ arrowhead=none ];
+	HiddenLayer24->HiddenLayer30[ arrowhead=none ];
+	HiddenLayer24->HiddenLayer31[ arrowhead=none ];
+	HiddenLayer24->HiddenLayer32[ arrowhead=none ];
+	HiddenLayer24->HiddenLayer33[ arrowhead=none ];
+	HiddenLayer25->HiddenLayer30[ arrowhead=none ];
+	HiddenLayer25->HiddenLayer31[ arrowhead=none ];
+	HiddenLayer25->HiddenLayer32[ arrowhead=none ];
+	HiddenLayer25->HiddenLayer33[ arrowhead=none ];
+	HiddenLayer26->HiddenLayer30[ arrowhead=none ];
+	HiddenLayer26->HiddenLayer31[ arrowhead=none ];
+	HiddenLayer26->HiddenLayer32[ arrowhead=none ];
+	HiddenLayer26->HiddenLayer33[ arrowhead=none ];
+	HiddenLayer27->HiddenLayer30[ arrowhead=none ];
+	HiddenLayer27->HiddenLayer31[ arrowhead=none ];
+	HiddenLayer27->HiddenLayer32[ arrowhead=none ];
+	HiddenLayer27->HiddenLayer33[ arrowhead=none ];
+	HiddenLayer30->OutputLayer0[ arrowhead=none ];
+	HiddenLayer30->OutputLayer1[ arrowhead=none ];
+	HiddenLayer31->OutputLayer0[ arrowhead=none ];
+	HiddenLayer31->OutputLayer1[ arrowhead=none ];
+	HiddenLayer32->OutputLayer0[ arrowhead=none ];
+	HiddenLayer32->OutputLayer1[ arrowhead=none ];
+	HiddenLayer33->OutputLayer0[ arrowhead=none ];
+	HiddenLayer33->OutputLayer1[ arrowhead=none ];
+	subgraph HiddenLayer1 {
+	HiddenLayer10 [ label="", shape=circle ];
+	HiddenLayer11 [ label="", shape=circle ];
+	HiddenLayer12 [ label="", shape=circle ];
+	HiddenLayer13 [ label="", shape=circle ];
+
+}
+;
+	subgraph HiddenLayer2 {
+	HiddenLayer20 [ label="", shape=circle ];
+	HiddenLayer21 [ label="", shape=circle ];
+	HiddenLayer22 [ label="", shape=circle ];
+	HiddenLayer23 [ label="", shape=circle ];
+	HiddenLayer24 [ label="", shape=circle ];
+	HiddenLayer25 [ label="", shape=circle ];
+	HiddenLayer26 [ label="", shape=circle ];
+	HiddenLayer27 [ label="", shape=circle ];
+
+}
+;
+	subgraph HiddenLayer3 {
+	HiddenLayer30 [ label="", shape=circle ];
+	HiddenLayer31 [ label="", shape=circle ];
+	HiddenLayer32 [ label="", shape=circle ];
+	HiddenLayer33 [ label="", shape=circle ];
+
+}
+;
+	subgraph InputLayer {
+	HInput0 [ style=invis ];
+	HInput1 [ style=invis ];
+	InputLayer0 [ label="", shape=circle ];
+	InputLayer1 [ label="", shape=circle ];
+
+}
+;
+	subgraph OutputLayer {
+	HOutput0 [ style=invis ];
+	HOutput1 [ style=invis ];
+	OutputLayer0 [ label="", shape=circle ];
+	OutputLayer1 [ label="", shape=circle ];
+
+}
+;
 
 }
